@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AppIconReducer" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -693,25 +694,102 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
+                        <segue destination="1Yz-mk-Hmg" kind="relationship" relationship="window.shadowedContentViewController" id="Xbq-08-1u4"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Index View Controller-->
+        <scene sceneID="evr-qj-bGs">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="1Yz-mk-Hmg" customClass="IndexViewController" customModule="AppIconReducer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="yni-uM-gYA">
+                        <rect key="frame" x="0.0" y="0.0" width="610" height="516"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8sd-cH-1WA">
+                                <rect key="frame" x="138" y="478" width="454" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="h6p-1Q-ODa"/>
+                                </constraints>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="center" title="拖拽图片到框中" usesSingleLineMode="YES" id="dOc-yH-4sL">
+                                    <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="pK8-2U-erB">
+                                <rect key="frame" x="140" y="20" width="450" height="450"/>
+                            </customView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JBu-8j-dDL">
+                                <rect key="frame" x="365" y="245" width="0.0" height="0.0"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="d4o-yg-eq2"/>
+                            </imageView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="USI-I5-7CB" customClass="DestinationView" customModule="App_Icon生成" customModuleProvider="target">
+                                <rect key="frame" x="140" y="20" width="450" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="5eX-kx-el1"/>
+                                    <constraint firstAttribute="width" secondItem="USI-I5-7CB" secondAttribute="height" multiplier="1:1" id="Vad-Xr-98g"/>
+                                </constraints>
+                            </customView>
+                            <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWF-2I-zhs">
+                                <rect key="frame" x="20" y="90" width="100" height="426"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Je8-v7-Huq"/>
+                                </constraints>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="swm-18-ezk">
+                                <rect key="frame" x="20" y="20" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1OB-WT-Dva"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" title="生成" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IhT-55-yii">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <color key="contentTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="onClickReduceButtonWithSender:" target="1Yz-mk-Hmg" id="47P-tH-pdY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="USI-I5-7CB" firstAttribute="top" secondItem="8sd-cH-1WA" secondAttribute="bottom" constant="8" id="1BD-Ez-bke"/>
+                            <constraint firstItem="pK8-2U-erB" firstAttribute="height" secondItem="USI-I5-7CB" secondAttribute="height" id="29O-M5-aqX"/>
+                            <constraint firstItem="JBu-8j-dDL" firstAttribute="centerY" secondItem="USI-I5-7CB" secondAttribute="centerY" id="8Wi-BE-0Jb"/>
+                            <constraint firstItem="GWF-2I-zhs" firstAttribute="leading" secondItem="yni-uM-gYA" secondAttribute="leading" constant="20" id="ErS-jr-Why"/>
+                            <constraint firstItem="pK8-2U-erB" firstAttribute="leading" secondItem="GWF-2I-zhs" secondAttribute="trailing" constant="20" id="H2X-Ez-Bhb"/>
+                            <constraint firstItem="pK8-2U-erB" firstAttribute="width" secondItem="USI-I5-7CB" secondAttribute="width" id="Idv-hQ-eya"/>
+                            <constraint firstItem="pK8-2U-erB" firstAttribute="centerX" secondItem="USI-I5-7CB" secondAttribute="centerX" id="Ipp-Gw-nJN"/>
+                            <constraint firstItem="swm-18-ezk" firstAttribute="width" secondItem="GWF-2I-zhs" secondAttribute="width" id="OJ4-fW-uM5"/>
+                            <constraint firstItem="pK8-2U-erB" firstAttribute="centerY" secondItem="USI-I5-7CB" secondAttribute="centerY" id="Ppk-jU-jHT"/>
+                            <constraint firstItem="JBu-8j-dDL" firstAttribute="centerX" secondItem="USI-I5-7CB" secondAttribute="centerX" id="Xh5-Sj-Mx1"/>
+                            <constraint firstItem="GWF-2I-zhs" firstAttribute="top" secondItem="yni-uM-gYA" secondAttribute="top" id="Xzz-q9-A6p"/>
+                            <constraint firstItem="8sd-cH-1WA" firstAttribute="top" secondItem="yni-uM-gYA" secondAttribute="top" constant="8" id="atX-Yz-tg6"/>
+                            <constraint firstItem="JBu-8j-dDL" firstAttribute="height" relation="lessThanOrEqual" secondItem="USI-I5-7CB" secondAttribute="height" id="bIp-nd-n3D"/>
+                            <constraint firstAttribute="bottom" secondItem="USI-I5-7CB" secondAttribute="bottom" constant="20" id="elI-qE-R8e"/>
+                            <constraint firstItem="8sd-cH-1WA" firstAttribute="leading" secondItem="USI-I5-7CB" secondAttribute="leading" id="joQ-VO-2gK"/>
+                            <constraint firstItem="swm-18-ezk" firstAttribute="top" secondItem="GWF-2I-zhs" secondAttribute="bottom" constant="20" id="lk2-xb-Orz"/>
+                            <constraint firstAttribute="trailing" secondItem="USI-I5-7CB" secondAttribute="trailing" constant="20" id="sHq-Yp-EsN"/>
+                            <constraint firstItem="swm-18-ezk" firstAttribute="centerX" secondItem="GWF-2I-zhs" secondAttribute="centerX" id="sKO-xZ-4bn"/>
+                            <constraint firstItem="JBu-8j-dDL" firstAttribute="width" relation="lessThanOrEqual" secondItem="USI-I5-7CB" secondAttribute="width" id="tjf-WH-fSy"/>
+                            <constraint firstItem="swm-18-ezk" firstAttribute="bottom" secondItem="USI-I5-7CB" secondAttribute="bottom" id="v4a-4e-pTc"/>
+                            <constraint firstItem="8sd-cH-1WA" firstAttribute="trailing" secondItem="USI-I5-7CB" secondAttribute="trailing" id="xp0-y9-oLL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="pK8-2U-erB" id="MKc-Sw-ldU"/>
+                        <outlet property="destinationImageView" destination="JBu-8j-dDL" id="0FM-HH-nyj"/>
+                        <outlet property="destinationView" destination="USI-I5-7CB" id="E1Y-bU-9uA"/>
+                        <outlet property="stackView" destination="GWF-2I-zhs" id="FL9-gb-l4b"/>
+                        <outlet property="tipsTextField" destination="8sd-cH-1WA" id="uPE-Qp-hOF"/>
+                    </connections>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="UcG-f8-aUL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="834"/>
         </scene>
     </scenes>
 </document>
